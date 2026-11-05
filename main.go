@@ -10,7 +10,7 @@ import (
 )
 
 func check_command(input *string, last_exit_code *int) int {
-	if *input == "quit" {
+	if *input == "quit" || *input == "exit" {
 		commands.Quit_Command()
 	}
 	if *input == "$?" {

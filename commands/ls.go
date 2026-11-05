@@ -15,6 +15,11 @@ func Ls_Command() int {
 	}
 
 	for _, object := range list {
+		if object.IsDir() {
+			color := color.New(color.FgBlue, color.Bold)
+			color.Print(object.Name() + " ")
+			continue
+		}
 		print(object.Name() + " ")
 	}
 	println()
