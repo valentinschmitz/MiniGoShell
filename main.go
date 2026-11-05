@@ -1,15 +1,21 @@
 package main
 
 import (
+	quit "MiniGoShell/commands"
 	"fmt"
-	"os"
+
+	"github.com/fatih/color"
 )
 
 func check_command(input *string) {
 	if *input == "quit" {
-		fmt.Println("Bye ! Bye !")
-		os.Exit(0)
+		quit.Quit_Command()
 	}
+}
+
+func print_prefix() {
+	color := color.New(color.FgCyan, color.Bold)
+	color.Print("MiniGoShell> ")
 }
 
 func main() {
@@ -17,6 +23,7 @@ func main() {
 
 	whileLoop := true
 	for whileLoop {
+		print_prefix()
 		fmt.Scan(&input)
 		check_command(&input)
 	}
