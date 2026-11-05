@@ -1,7 +1,7 @@
 package main
 
 import (
-	quit "MiniGoShell/commands"
+	"MiniGoShell/commands"
 	"fmt"
 
 	"github.com/fatih/color"
@@ -9,7 +9,10 @@ import (
 
 func check_command(input *string) {
 	if *input == "quit" {
-		quit.Quit_Command()
+		commands.Quit_Command()
+	}
+	if *input == "ls" {
+		commands.Ls_Command()
 	}
 }
 

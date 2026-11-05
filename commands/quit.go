@@ -1,4 +1,4 @@
-package quit
+package commands
 
 import (
 	"os"
