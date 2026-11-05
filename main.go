@@ -2,7 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
+
+func check_command(input *string) {
+	if *input == "quit" {
+		fmt.Println("Bye ! Bye !")
+		os.Exit(0)
+	}
+}
 
 func main() {
 	var input string = ""
@@ -10,6 +18,6 @@ func main() {
 	whileLoop := true
 	for whileLoop {
 		fmt.Scan(&input)
-		fmt.Println("User said : " + input)
+		check_command(&input)
 	}
 }
