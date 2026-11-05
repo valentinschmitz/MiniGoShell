@@ -3,6 +3,8 @@ package main
 import (
 	"MiniGoShell/commands"
 	"fmt"
+	"os"
+	"os/user"
 
 	"github.com/fatih/color"
 )
@@ -21,8 +23,15 @@ func check_command(input *string, last_exit_code *int) int {
 }
 
 func print_prefix() {
+	current_user, err := user.Current()
+
+	if err != nil {
+		color.Red("Error: %v", err)
+		os.Exit(84)
+	}
+
 	color := color.New(color.FgCyan, color.Bold)
-	color.Print("MiniGoShell> ")
+	color.Printf("%s$%s> ", current_user.Username, current_user.HomeDir)
 }
 
 func main() {
