@@ -7,9 +7,12 @@ import (
 	"github.com/fatih/color"
 )
 
-func check_command(input *string, last_return_code *int) int {
+func check_command(input *string, last_exit_code *int) int {
 	if *input == "quit" {
 		commands.Quit_Command()
+	}
+	if *input == "$?" {
+		commands.Get_Exit_Code(last_exit_code)
 	}
 	if *input == "ls" {
 		return commands.Ls_Command()
@@ -24,12 +27,12 @@ func print_prefix() {
 
 func main() {
 	var input string = ""
-	var last_return_code int = 0
+	var last_exit_code int = 0
 
 	whileLoop := true
 	for whileLoop {
 		print_prefix()
 		fmt.Scan(&input)
-		last_return_code = check_command(&input, &last_return_code)
+		last_exit_code = check_command(&input, &last_exit_code)
 	}
 }
