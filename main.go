@@ -19,6 +19,9 @@ func check_command(input *string, last_exit_code *int) int {
 	if *input == "ls" {
 		return commands.Ls_Command()
 	}
+	if *input == "help" {
+		return commands.Help_Command()
+	}
 	return 84
 }
 
